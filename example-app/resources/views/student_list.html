@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="assets/img/cvsu.png" type="image/png">
+    <style>
+        /* Custom style to make the table header fixed and the body scrollable */
+        .scrollable-table-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scrollable-table {
+            display: block;
+            overflow-y: auto;
+            max-height: 300px; /* Adjust the height for scroll */
+        }
+
+        .scrollable-table thead {
+            position: sticky;
+            top: 0;
+            background-color: #007f00;
+            opacity: 70%;
+            z-index: 1;
+        }
+
+        /* Optional: Improve the look of the header */
+        th {
+            text-align: left;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Filter and Search Bar Section -->
+        <div class="flex justify-between items-center mb-4">
+            <!-- Labels for filtering courses -->
+            <div class="flex space-x-4">
+                <button class="text-sm text-gray-700 font-semibold py-2 px-4 rounded-full hover:bg-green-200 transition duration-200">All</button>
+                <button class="text-sm text-gray-700 font-semibold py-2 px-4 rounded-full hover:bg-green-200 transition duration-200">BSCS</button>
+                <button class="text-sm text-gray-700 font-semibold py-2 px-4 rounded-full hover:bg-green-200 transition duration-200">BSIT</button>
+            </div>
+        </div>
+        <!-- Table Section with Scrollable Body -->
+        <div class="bg-white shadow-lg rounded-lg p-6 w-full">
+            <h2 class="text-2xl font-semibold text-gray-700 pb-4">Recently Enrolled</h2>
+            <!-- Wrapper to enable scrolling -->
+            <div class="flex mb-4">
+                <input type="text" id="search-input" class="w-full px-3 py-2 border rounded-md shadow-sm" placeholder="Search">
+                <button id="search-button" class="ml-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-md">
+                    <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">Surname</th>
+                            <th class="py-2 px-4 border-b">Given Name</th>
+                            <th class="py-2 px-4 border-b">Student No.</th>
+                            <th class="py-2 px-4 border-b">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-table-body">
+                        <!-- Student rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between items-center mt-4">
+                <div>
+                    <button id="prev-page" class="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-md" disabled>Previous</button>
+                    <button id="next-page" class="px-4 py-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-md">Next</button>
+                </div>
+                <span id="page-info" class="text-gray-700">Page 1 of X</span>
+            </div>
+        </div>
+
+        <script>
+            const students = [
+                { surname: 'Delos Santos', givenName: 'Jeremaiah', studentNo: '2022-1189000' },
+                { surname: 'Manila', givenName: 'Aaron Jasthony', studentNo: '2022-1189809' },
+                { surname: 'Garcia', givenName: 'Joanna Mikka', studentNo: '2022-1189222' },
+                // Add more student objects as needed
+            ];
+            let currentPage = 1;
+            const rowsPerPage = 2;
+
+            function displayStudents() {
+                const startIndex = (currentPage - 1) * rowsPerPage;
+                const endIndex = startIndex + rowsPerPage;
+                const paginatedStudents = students.slice(startIndex, endIndex);
+                const tableBody = document.getElementById('student-table-body');
+                tableBody.innerHTML = '';
+
+                paginatedStudents.forEach(student => {
+                    const row = `<tr class="${(students.indexOf(student) % 2 === 0) ? 'bg-gray-100' : 'bg-white'}">
+                        <td class="py-2 px-4 border-b">${students.surname}</td>
+                        <td class="py-2 px-4 border-b">${students.givenName}</td>
+                        <td class="py-2 px-4 border-b">${students.studentNo}</td>
+                        <td class="py-2 px-4 border-b">
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Edit</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">View</button>
+                        </td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+
+                document.getElementById('page-info').innerText = `Page ${currentPage} of ${Math.ceil(students.length / rowsPerPage)}`;
+                document.getElementById('prev-page').disabled = currentPage === 1;
+                document.getElementById('next-page').disabled = currentPage === Math.ceil(students.length / rowsPerPage);
+            }
+
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayStudents();
+                }
+            });
+
+            document.getElementById('next-page').addEventListener('click', () => {
+                if (currentPage < Math.ceil(students.length / rowsPerPage)) {
+                    currentPage++;
+                    displayStudents();
+                }
+            });
+
+            document.getElementById('search-button').addEventListener('click', () => {
+                const searchTerm = document.getElementById('search-input').value.toLowerCase();
+                const filteredStudents = students.filter(student => 
+                    student.surname.toLowerCase().includes(searchTerm) || 
+                    student.givenName.toLowerCase().includes(searchTerm) || 
+                    student.studentNo.includes(searchTerm)
+                );
+                const tableBody = document.getElementById('student-table-body');
+                tableBody.innerHTML = '';
+
+                filteredStudents.forEach(student => {
+                    const row = `<tr class="${(filteredStudents.indexOf(student) % 2 === 0) ? 'bg-gray-100' : 'bg-white'}">
+                        <td class="py-2 px-4 border-b">${student.surname}</td>
+                        <td class="py-2 px-4 border-b">${student.givenName}</td>
+                        <td class="py-2 px-4 border-b">${student.studentNo}</td>
+                        <td class="py-2 px-4 border-b">
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Edit</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">View</button>
+                        </td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            });
+
+            displayStudents();
+        </script>
+    </div>
+</body>
+</html>

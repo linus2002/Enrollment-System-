@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link
+	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+	rel="stylesheet">
+        <link href="assets/css/tailwind.css" rel="stylesheet">
+        <script src="assets/js/alpine.js" defer></script>
+        <link rel="icon" href="assets/img/cvsu.png" type="image/png">
+        <title>Cavite State University - Bacoor Campus</title>
+    </head>
+    
+    
+<body class="antialiased bg-gray-100">
+    <div class="flex relative" x-data="{navOpen: false}">
+        <!-- NAV -->
+        <nav class="absolute md:relative w-64 transform -translate-x-full md:translate-x-0 h-screen overflow-y-scroll bg-black transition-all duration-300" :class="{'-translate-x-full': !navOpen}">
+            <div class="flex flex-col justify-between h-full">
+                <div class="p-4">
+                    <!-- LOGO -->
+                    <a class="flex items-center text-white space-x-4" href="">
+                        <img src="assets/img/cvsu.png" alt="Dashboard Icon" class="w-6 h-6"> <!-- Image before the text -->
+                        <span class="text-2xl font-bold text-white">Dashboard</span>
+                    </a>
+                    <!-- NAV LINKS -->
+                    <div class="py-4 text-gray-400 space-y-1">
+                        <!-- BASIC LINK -->
+                        <a href="#" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">home</span>
+                            <span>Home</span>
+                        </a>
+                    
+                        <a href="add_new_student.html" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">person_add</span>
+                            <span>Add New Student</span>
+                        </a>
+                        
+                     
+                    
+                        <a href="#" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">list</span>
+                            <span>Student List</span>
+                        </a>
+                    
+                        <a href="#" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">description</span>
+                            <span>Issue COR</span>
+                        </a>
+                    
+                        <a href="#" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">logout</span>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+              
+            </div>
+        </nav>
+        <!-- END OF NAV -->
+
+        <!-- PAGE CONTENT -->
+        <main class="flex-1 h-screen overflow-y-scroll overflow-x-hidden">
+            <div class="md:hidden justify-between items-center bg-black text-white flex">
+                <h1 class="text-2xl font-bold px-4">Dashboard</h1>
+                <button @click="navOpen = !navOpen" class="btn p-4 focus:outline-none hover:bg-gray-800">
+                    <svg class="w-6 h-6 fill-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            <section class="max-w-7xl mx-auto py-4 px-5">
+                <div class="flex justify-between items-center rounded-lg border-b border-gray-300 bg-white py-4 px-6">
+                    <div class="flex flex-col items-start">
+                      <h1 class="text-2xl font-bold " style="color: #47C347; opacity: 100%;">Cavite State University - Bacoor Campus</h1>
+                      <!-- Welcoming text under the title -->
+                   <p class="text-gray-500">Welcome Back Linus!</p>
+                    </div>
+                  
+                    <!-- Logo on the right side -->
+                    <img src="assets/img/cvsu.png" alt="Cavite State University Logo" class="h-20">
+                  </div>
+                  
+                  
+
+                <!-- STATISTICS -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 py-6">
+                    <div class="bg-white shadow rounded-lg flex justify-between items-center py-3.5 px-3.5 hover:shadow-lg hover:bg-gray-50 transition duration-300">
+                        <div class="space-y-2">
+                            <p class="text-xs text-gray-400 uppercase">Total Students</p>
+                            <div class="flex items-center space-x-2">
+                                <h1 class="text-xl font-semibold">5391</h1>
+                                <p class="text-xs bg-green-50 text-green-500 px-1 rounded">+5</p>
+                            </div>
+                        </div>
+                        <span class="material-icons text-gray-300 text-4xl group-hover:text-gray-500">groups</span>
+                    </div>
+                
+                    <div class="bg-white shadow rounded-lg flex justify-between items-center py-3.5 px-3.5 hover:shadow-lg hover:bg-gray-50 transition duration-300">
+                        <div class="space-y-2">
+                            <p class="text-xs text-gray-400 uppercase">BSCS Students</p>
+                            <div class="flex items-center space-x-2">
+                                <h1 class="text-xl font-semibold">819</h1>
+                            </div>
+                        </div>
+                        <span class="material-icons text-gray-300 text-4xl group-hover:text-gray-500">school</span>
+                    </div>
+                
+                    <div class="bg-white shadow rounded-lg flex justify-between items-center py-3.5 px-3.5 hover:shadow-lg hover:bg-gray-50 transition duration-300">
+                        <div class="space-y-2">
+                            <p class="text-xs text-gray-400 uppercase">BSIT Students</p>
+                            <div class="flex items-center space-x-2">
+                                <h1 class="text-xl font-semibold">121</h1>
+                            </div>
+                        </div>
+                        <span class="material-icons text-gray-300 text-4xl group-hover:text-gray-500">computer</span>
+                    </div>
+                
+                    <div class="bg-white shadow rounded-lg flex justify-between items-center py-3.5 px-3.5 hover:shadow-lg hover:bg-gray-50 transition duration-300">
+                        <div class="space-y-2">
+                            <p class="text-xs text-gray-400 uppercase">Pending</p>
+                            <div class="flex items-center space-x-2">
+                                <h1 class="text-xl font-semibold">243</h1>
+                            </div>
+                        </div>
+                        <span class="material-icons text-gray-300 text-4xl group-hover:text-gray-500">hourglass_empty</span>
+                    </div>
+                </div>
+                
+                
+                <!-- NEW SECTION -->
+                <div class="bg-white shadow-lg rounded-lg p-6 overflow-x-auto w-full">
+                    <h2 class="text-2xl font-semibold text-gray-700 pb-4">Recently Enrolled</h2>
+                    <table class="w-full text-left border-collapse border border-gray-300 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr class="text-white" style="background-color: #007f00; opacity: 70%;">
+                                <th class="px-4 py-2 font-semibold text-sm">Surname</th>
+                                <th class="px-4 py-2 font-semibold text-sm">Given Name</th>
+                                <th class="px-4 py-2 font-semibold text-sm">Student No.</th>
+                                <th class="px-4 py-2 font-semibold text-sm">Actions</th> <!-- New column for actions -->
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                            <tr class="hover:bg-gray-100 transition duration-200 text-sm font-semibold">
+                                <td class="px-4 py-2 border-b border-gray-200">Aurin</td>
+                                <td class="px-4 py-2 border-b border-gray-200">Linus</td>
+                                <td class="px-4 py-2 border-b border-gray-200">202211669</td>
+                                <td class="px-4 py-2 border-b border-gray-200">
+                                    <a href="#" class="text-gray-600 hover:text-green-500 mr-2">
+                                        <i class="material-icons-outlined text-base">visibility</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  mx-2">
+                                        <i class="material-icons-outlined text-base">edit</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  ml-2">
+                                        <i class="material-icons-round text-base">delete_outline</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-100 transition duration-200 text-sm font-semibold">
+                                <td class="px-4 py-2 border-b border-gray-200">Smith</td>
+                                <td class="px-4 py-2 border-b border-gray-200">Jane</td>
+                                <td class="px-4 py-2 border-b border-gray-200">20210002</td>
+                                <td class="px-4 py-2 border-b border-gray-200">
+                                    <a href="#" class="text-gray-600 hover:text-green-500 mr-2">
+                                        <i class="material-icons-outlined text-base">visibility</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  mx-2">
+                                        <i class="material-icons-outlined text-base">edit</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  ml-2">
+                                        <i class="material-icons-round text-base">delete_outline</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-100 transition duration-200 text-sm font-semibold">
+                                <td class="px-4 py-2 border-b border-gray-200">Garcia</td>
+                                <td class="px-4 py-2 border-b border-gray-200">Carlos</td>
+                                <td class="px-4 py-2 border-b border-gray-200">20210003</td>
+                                <td class="px-4 py-2 border-b border-gray-200">
+                                    <a href="#" class="text-gray-600 hover:text-green-500 mr-2">
+                                        <i class="material-icons-outlined text-base">visibility</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  mx-2">
+                                        <i class="material-icons-outlined text-base">edit</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  ml-2">
+                                        <i class="material-icons-round text-base">delete_outline</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-100 transition duration-200 text-sm font-semibold">
+                                <td class="px-4 py-2 border-b border-gray-200">Lee</td>
+                                <td class="px-4 py-2 border-b border-gray-200">Angela</td>
+                                <td class="px-4 py-2 border-b border-gray-200">20210004</td>
+                                <td class="px-4 py-2 border-b border-gray-200">
+                                    <a href="#" class="text-gray-600 hover:text-green-500 mr-2">
+                                        <i class="material-icons-outlined text-base">visibility</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  mx-2">
+                                        <i class="material-icons-outlined text-base">edit</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  ml-2">
+                                        <i class="material-icons-round text-base">delete_outline</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-100 transition duration-200 text-sm font-semibold">
+                                <td class="px-4 py-2 border-b border-gray-200">Kim</td>
+                                <td class="px-4 py-2 border-b border-gray-200">David</td>
+                                <td class="px-4 py-2 border-b border-gray-200">20210005</td>
+                                <td class="px-4 py-2 border-b border-gray-200">
+                                    <a href="#" class="text-gray-600 hover:text-green-500 mr-2">
+                                        <i class="material-icons-outlined text-base">visibility</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  mx-2">
+                                        <i class="material-icons-outlined text-base">edit</i>
+                                    </a>
+                                    <a href="#" class="text-gray-600 hover:text-green-500  ml-2">
+                                        <i class="material-icons-round text-base">delete_outline</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                    
+    
+
+
+                
+            </section>
+            <!-- END OF PAGE CONTENT -->
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/img/cvsu.png" type="image/png">
+    <title>Add New Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navbar -->
+    <header class="text-white" style="background-color: #007f00; opacity: 70%;">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-lg font-bold">New Student Information</h1>
+            <nav>
+                <a href="index.html" class="text-sm hover:underline">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 mt-8">
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4 " style="color: #007f00;">Add New Student</h2>
+            <form action="#" method="post" class="space-y-4">
+                <!-- Grid Layout for Inputs (two per row) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Last Name -->
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter last name"
+                            required>
+                    </div>
+
+                    <!-- First Name -->
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter first name"
+                            required>
+                    </div>
+
+                    <!-- Given Name -->
+                    <div>
+                        <label for="givenName" class="block text-sm font-medium text-gray-700">Given Name</label>
+                        <input
+                            type="text"
+                            id="givenName"
+                            name="givenName"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter given name"
+                            required>
+                    </div>
+
+                    <!-- Suffix -->
+                    <div>
+                        <label for="suffix" class="block text-sm font-medium text-gray-700">Suffix</label>
+                        <input
+                            type="text"
+                            id="suffix"
+                            name="suffix"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter suffix (if any)">
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div>
+                        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                        <input
+                            type="date"
+                            id="dob"
+                            name="dob"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            required>
+                    </div>
+
+                    <!-- Sex -->
+                    <div>
+                        <label for="sex" class="block text-sm font-medium text-gray-700">Sex</label>
+                        <select
+                            id="sex"
+                            name="sex"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            required>
+                            <option value="" disabled selected>Select Sex</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Address -->
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                        <input
+                            type="text"
+                            id="address"
+                            name="address"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter address"
+                            required>
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div>
+                        <label for="contactNumber" class="block text-sm font-medium text-gray-700">Contact Number</label>
+                        <input
+                            type="text"
+                            id="contactNumber"
+                            name="contactNumber"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter contact number"
+                            required>
+                    </div>
+
+                    <!-- Active Email Address -->
+                    <div>
+                        <label for="activeEmail" class="block text-sm font-medium text-gray-700">Active Email Address</label>
+                        <input
+                            type="email"
+                            id="activeEmail"
+                            name="activeEmail"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter active email address"
+                            required>
+                    </div>
+
+                    <!-- Student Type -->
+                    <div>
+                        <label for="studentType" class="block text-sm font-medium text-gray-700">Student Type</label>
+                        <select
+                            id="studentType"
+                            name="studentType"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            required>
+                            <option value="" disabled selected>Select Student Type</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Transferee">Transferee</option>
+                            <option value="Irregular">Irregular</option>
+                        </select>
+                    </div>
+
+                    <!-- Year -->
+                    <div>
+                        <label for="year" class="block text-sm font-medium text-gray-700">Year</label>
+                        <select
+                            id="year"
+                            name="year"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            required>
+                            <option value="" disabled selected>Select Year</option>
+                            <option value="1st">1st Year</option>
+                            <option value="2nd">2nd Year</option>
+                            <option value="3rd">3rd Year</option>
+                            <option value="4th">4th Year</option>
+                        </select>
+                    </div>
+
+                    <!-- Semester -->
+                    <div>
+                        <label for="semester" class="block text-sm font-medium text-gray-700">Semester</label>
+                        <select
+                            id="semester"
+                            name="semester"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            required>
+                            <option value="" disabled selected>Select Semester</option>
+                            <option value="1st">1st Semester</option>
+                            <option value="2nd">2nd Semester</option>
+                            <option value="Summer">Summer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Account Section -->
+                <h2 class="text-xl font-semibold mb-4" style="color: #007f00;">Account</h2>
+
+                <!-- Horizontal Inputs for Student Number and Password -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <!-- Student Number -->
+                    <div>
+                        <label for="studentNumber" class="block text-sm font-medium text-gray-700">Student Number</label>
+                        <input
+                            type="text"
+                            id="studentNumber"
+                            name="studentNumber"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter student number"
+                            required>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+                            placeholder="Enter password"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <!-- Submit Button -->
+<div class="mt-6 text-right">
+    <button type="submit" class="py-2 px-4 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" style="background-color: #007f00;">
+        Add Student
+    </button>
+
+    <button type="reset" class="py-2 px-4 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" style="background-color: #e63946;">
+        Clear All
+    </button>
+</div>
+
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

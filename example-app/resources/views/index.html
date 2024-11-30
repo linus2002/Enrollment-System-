@@ -1,79 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+    <link href="assets/css/tailwind.css" rel="stylesheet">
+    <script src="assets/js/alpine.js" defer></script>
+    <link rel="icon" href="assets/img/cvsu.png" type="image/png">
+    <title>Cavite State University - Bacoor Campus</title>
 </head>
-
-<body>
-
-    <div class="container" id="container">
-       
-        <div class="form-container sign-up">
-            <form>
-                <div class="logo-title-container">
-                    <img src="assets/cvsu.png" alt="Cavite State University Logo" class="logo">
-                    <h1>Welcome to Cavite State University <br> - Bacoor Campus</h1>
+<body class="antialiased bg-gray-100">
+    <div class="flex relative" x-data="{ navOpen: false }">
+        <!-- NAV -->
+        <nav class="absolute md:relative w-64 transform -translate-x-full md:translate-x-0 h-screen overflow-y-scroll bg-black transition-all duration-300" :class="{'-translate-x-full': !navOpen}">
+            <div class="flex flex-col justify-between h-full">
+                <div class="p-4">
+                    <!-- LOGO -->
+                    <a class="flex items-center text-white space-x-4" href="javascript:void(0)">
+                        <img src="assets/img/cvsu.png" alt="Dashboard Icon" class="w-6 h-6">
+                        <span class="text-2xl font-bold text-white">Dashboard</span>
+                    </a>
+                    <!-- NAV LINKS -->
+                    <div class="py-4 text-gray-400 space-y-1">
+                        <a href="javascript:void(0)" id="homeButton" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">home</span>
+                            <span>Home</span>
+                        </a>
+                        <a href="javascript:void(0)" id="addNewStudentButton" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">person_add</span>
+                            <span>Add New Student</span>
+                        </a>
+                        <a href="javascript:void(0)" id="studentListButton" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">list</span>
+                            <span>Student List</span>
+                        </a>
+                        <a href="javascript:void(0)" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">description</span>
+                            <span>Issue COR</span>
+                        </a>
+                        <a href="javascript:void(0)" id="logoutBtn" class="block py-2.5 px-4 flex items-center space-x-2 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <span class="material-icons">logout</span>
+                            <span>Logout</span>
+                        </a>
+                    </div>
                 </div>
-                <span>Please fill out the fields below to register </span>
-                <input type="text" placeholder="Username">
-                <input type="email" placeholder="Password">
-                <input type="password" placeholder="Confirm Password">
-                <button>Sign Up</button>
-            </form>
-        </div>
-        <div class="form-container sign-in">
-            <form>
-                <div class="logo-title-container">
-                    <img src="assets/cvsu.png" alt="Cavite State University Logo" class="logo">
-                    <h1>Welcome to Cavite State University <br> - Bacoor Campus</h1>
-                </div>
-                <span>Please fill out the fields below to register</span>
-                
-                <!-- Dropdown Menu -->
-                <select>
-                    <option value="" disabled selected>Select Role</option>
-                    <option value="admin">Admin</option>
-                    <option value="student">Student</option>
-                    <option value="registrar">Registrar</option>
-                    <option value="department">Department</option>
-                </select>
-                
-        
-                <input type="email" placeholder="Username">
-                <input type="password" placeholder="Password">
-                <a href="#">Forget Your Password?</a>
-                <button>Sign In</button>
-                <div class="circle"></div>
-            </form>
-        </div>
-        
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>Create Your Account</h1>
-                    <p>Register today to begin your journey with us.</p>
-                    <button class="hidden" id="login">Sign In</button>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <h1>Login</h1>
-                    <p>Dont Have An Account?</p>
-                    <button class="hidden" id="register">Sign up</button>
-                    <div class="circle"></div>
-                </div>
-                
             </div>
-        </div>
+        </nav>
+
+        <!-- PAGE CONTENT -->
+        <main class="flex-1 h-screen overflow-y-scroll overflow-x-hidden">
+            <div class="md:hidden justify-between items-center bg-black text-white flex">
+                <h1 class="text-2xl font-bold px-4">Dashboard</h1>
+                <button @click="navOpen = !navOpen" class="btn p-4 focus:outline-none hover:bg-gray-800">
+                    <svg class="w-6 h-6 fill-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Content Container -->
+            <section id="pageContent" class="max-w-full w-full">
+                <!-- Default content (Dashboard) will be loaded here -->
+            </section>
+        </main>
     </div>
 
-    <div class="circle-right"></div>
-    <div class="circle-left"></div>
+    <script>
+        // Function to load content dynamically
+        function loadPageContent(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('pageContent').innerHTML = html;
+                })
+                .catch(error => console.error('Error loading the page:', error));
+        }
 
-    <script src="script.js"></script>
+        // Add event listeners to buttons
+        document.getElementById('homeButton').addEventListener('click', function() {
+            loadPageContent('dashboard.html'); // Replace with your dashboard page path
+        });
+
+        document.getElementById('addNewStudentButton').addEventListener('click', function() {
+            loadPageContent('add_new_student.html'); // Replace with your "Add New Student" page path
+        });
+
+        document.getElementById('studentListButton').addEventListener('click', function() {
+            loadPageContent('student_list.html'); // Replace with your "Student List" page path
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+        // Redirect to the login page
+        window.location.href = 'login.html'; // Replace 'login.html' with the path to your login page
+    });
+
+      
+        // Load default content (Dashboard)
+        loadPageContent('dashboard.html');
+    </script>
 </body>
-
 </html>
